@@ -13,13 +13,13 @@ function App() {
           alt="IC 1805: The Heart Nebula"
         />
       </div>
-      <div>
+      <div className="right-side">
         <Image src="https://api.nasa.gov/images/logo.png" alt="Nasa Logo" />
-        <Text>IC 1805: The Heart Nebula</Text>
-        <Date dateTime="2019-09-11">2019-09-11</Date>
+        <Text className="headline">IC 1805: The Heart Nebula</Text>
+        <Date className="date">2019-09-11</Date>
         <hr />
 
-        <Text>
+        <Text className="paragraph">
           What energizes the Heart Nebula? First, the large emission nebula
           dubbed IC 1805 looks, in whole, like a human heart. The nebula glows
           brightly in red light emitted by its most prominent element: hydrogen.
