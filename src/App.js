@@ -1,6 +1,23 @@
 import React from "react";
 import "./App.css";
 
+
+function photoOfTheDay(props) {
+  const {title, url, date, explanation, copyright} = props
+
+  return (
+    
+  )
+}
+
+
+
+
+
+
+
+
+
 function App() {
   return (
     <div className="App">
