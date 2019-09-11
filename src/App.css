@@ -20,6 +20,14 @@
   color: white;
 }
 
+.img-container {
+  flex: 60%;
+}
+
+.img-container img {
+  width: 100%;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -35,6 +43,7 @@
 
 .right-side {
   padding: 40px;
+  flex: 40%;
 }
 
 .headline {

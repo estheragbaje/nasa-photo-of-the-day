@@ -1,49 +1,62 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Image from "./components/Image";
 import Text from "./components/Text";
 import Date from "./components/Date";
 import Loading from "./components/Loading";
+import axios from "axios";
 
-function Content() {
+function Content(props) {
+  const { date, explanation, hdurl, title, ...rest } = props;
   return (
     <>
-      <div>
-        <Image
-          src="https://apod.nasa.gov/apod/image/1909/HeartNebula_Falls_960.jpg"
-          alt="IC 1805: The Heart Nebula"
-        />
+      <div className="img-container">
+        <Image src={hdurl} alt={title} />
       </div>
       <div className="right-side">
         <Image src="https://api.nasa.gov/images/logo.png" alt="Nasa Logo" />
-        <Text className="headline">IC 1805: The Heart Nebula</Text>
-        <Date className="date">2019-09-11</Date>
+        <Text className="headline">{title}</Text>
+        <Date className="date">{date}</Date>
         <hr />
 
-        <Text className="paragraph">
-          What energizes the Heart Nebula? First, the large emission nebula
-          dubbed IC 1805 looks, in whole, like a human heart. The nebula glows
-          brightly in red light emitted by its most prominent element: hydrogen.
-          The red glow and the larger shape are all powered by a small group of
-          stars near the nebula's center. In the center of the Heart Nebula are
-          young stars from the open star cluster Melotte 15 that are eroding
-          away several picturesque dust pillars with their energetic light and
-          winds. The open cluster of stars contains a few bright stars nearly 50
-          times the mass of our Sun, many dim stars only a fraction of the mass
-          of our Sun, and an absent microquasar that was expelled millions of
-          years ago. The Heart Nebula is located about 7,500 light years away
-          toward the constellation of Cassiopeia. Coincidentally, a small meteor
-          was captured in the foreground during imaging and is visible above the
-          dust pillars. At the top right is the companion Fishhead Nebula.
-        </Text>
+        <Text className="paragraph">{explanation}</Text>
       </div>
     </>
   );
 }
 
 function App() {
-  let isLoading = true;
-  return <div className="App">{isLoading ? <Loading /> : <Content />}</div>;
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    axios
+      .get("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
+      .then(response => {
+        setData(response.data);
+        setIsLoading(false);
+      });
+  }, []);
+
+  return (
+    <div className="App">
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <Content
+          date={data.date}
+          explanation={data.explanation}
+          hdurl={data.hdurl}
+          title={data.title}
+        />
+      )}
+    </div>
+  );
 }
 
 export default App;
+
+// function sampleFunc1() {}
+// // const sampleFunc2 = function() {};
+// const sampleFunc3 = () => {};
+// const sampleFunc1 = () => {};

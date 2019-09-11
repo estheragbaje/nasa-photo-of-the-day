@@ -5,10 +5,10 @@ function Loading() {
   return (
     <div className="spinner">
       <div>
-        <div class="lds-css ng-scope">
+        <div className="lds-css ng-scope">
           <div
             style={{ width: "100%", height: "100%" }}
-            class="lds-double-ring"
+            className="lds-double-ring"
           >
             <div></div>
             <div></div>
