@@ -3,10 +3,11 @@ import "./App.css";
 import Image from "./components/Image";
 import Text from "./components/Text";
 import Date from "./components/Date";
+import Loading from "./components/Loading";
 
-function App() {
+function Content() {
   return (
-    <div className="App">
+    <>
       <div>
         <Image
           src="https://apod.nasa.gov/apod/image/1909/HeartNebula_Falls_960.jpg"
@@ -36,8 +37,13 @@ function App() {
           dust pillars. At the top right is the companion Fishhead Nebula.
         </Text>
       </div>
-    </div>
+    </>
   );
+}
+
+function App() {
+  let isLoading = true;
+  return <div className="App">{isLoading ? <Loading /> : <Content />}</div>;
 }
 
 export default App;

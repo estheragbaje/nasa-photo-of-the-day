@@ -1,18 +1,25 @@
 import React from "react";
+import Text from "./Text";
 
 function Loading() {
   return (
-    <div>
-      <div class="lds-css ng-scope">
-        <div style="width:100%;height:100%" class="lds-double-ring">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+    <div className="spinner">
+      <div>
+        <div class="lds-css ng-scope">
+          <div
+            style={{ width: "100%", height: "100%" }}
+            class="lds-double-ring"
+          >
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
       </div>
+      <Text className="loader-text">Loading...</Text>
     </div>
   );
 }
