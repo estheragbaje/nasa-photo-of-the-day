@@ -7,6 +7,7 @@ import Loading from "./components/Loading";
 import axios from "axios";
 import styled from "styled-components";
 
+//refactoring using styled-components
 const ImageContainer = styled.div`
   flex: 60%;
 `;
@@ -17,6 +18,27 @@ const Photo = styled.img`
   object-fit: cover;
 `;
 
+const RightSide = styled.div`
+  padding: 40px;
+  flex: 40%;
+`;
+
+const Headline = styled.p`
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 10px;
+`;
+
+const DateStyle = styled.time`
+  font-size: 24px;
+`;
+
+const Paragraph = styled.p`
+  margin-top: 40px;
+  font-size: 18px;
+  line-height: 180%;
+`;
+
 function Content(props) {
   const { date, explanation, hdurl, title, ...rest } = props;
   return (
@@ -24,14 +46,14 @@ function Content(props) {
       <ImageContainer>
         <Photo src={hdurl} alt={title} />
       </ImageContainer>
-      <div className="right-side">
+      <RightSide>
         <Image src="https://api.nasa.gov/images/logo.png" alt="Nasa Logo" />
-        <Text className="headline">{title}</Text>
-        <Date className="date">{date}</Date>
+        <Headline>{title}</Headline>
+        <DateStyle>{date}</DateStyle>
         <hr />
 
-        <Text className="paragraph">{explanation}</Text>
-      </div>
+        <Paragraph>{explanation}</Paragraph>
+      </RightSide>
     </>
   );
 }
