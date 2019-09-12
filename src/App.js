@@ -5,14 +5,25 @@ import Text from "./components/Text";
 import Date from "./components/Date";
 import Loading from "./components/Loading";
 import axios from "axios";
+import styled from "styled-components";
+
+const ImageContainer = styled.div`
+  flex: 60%;
+`;
+
+const Photo = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
 
 function Content(props) {
   const { date, explanation, hdurl, title, ...rest } = props;
   return (
     <>
-      <div className="img-container">
-        <Image src={hdurl} alt={title} />
-      </div>
+      <ImageContainer>
+        <Photo src={hdurl} alt={title} />
+      </ImageContainer>
       <div className="right-side">
         <Image src="https://api.nasa.gov/images/logo.png" alt="Nasa Logo" />
         <Text className="headline">{title}</Text>
