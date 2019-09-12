@@ -23,7 +23,7 @@ const RightSide = styled.div`
   flex: 40%;
 `;
 
-const Headline = styled.p`
+const HeadlineStyle = styled.p`
   font-size: 48px;
   font-weight: 600;
   margin-bottom: 10px;
@@ -33,7 +33,7 @@ const DateStyle = styled.time`
   font-size: 24px;
 `;
 
-const Paragraph = styled.p`
+const ParagraphStyle = styled.p`
   margin-top: 40px;
   font-size: 18px;
   line-height: 180%;
@@ -48,11 +48,11 @@ function Content(props) {
       </ImageContainer>
       <RightSide>
         <Image src="https://api.nasa.gov/images/logo.png" alt="Nasa Logo" />
-        <Headline>{title}</Headline>
+        <HeadlineStyle>{title}</HeadlineStyle>
         <DateStyle>{date}</DateStyle>
         <hr />
 
-        <Paragraph>{explanation}</Paragraph>
+        <ParagraphStyle>{explanation}</ParagraphStyle>
       </RightSide>
     </>
   );
@@ -68,7 +68,8 @@ function App() {
       .then(response => {
         setData(response.data);
         setIsLoading(false);
-      });
+      })
+      .catch(error => {});
   }, []);
 
   return (
